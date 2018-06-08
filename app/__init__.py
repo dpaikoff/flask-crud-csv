@@ -11,5 +11,5 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 admin = Admin(app)
 
-from app import models, views
+from app import models, views, routes
 
