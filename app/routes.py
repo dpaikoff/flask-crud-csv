@@ -1,6 +1,6 @@
+import json
 import pandas as pd
 from io import StringIO
-from flask_api import status
 from flask import request, make_response, redirect
 
 from app import app, db
@@ -15,8 +15,8 @@ def upload_file():
             df.to_sql('items', con=db.engine, if_exists='replace', index=False)
             return redirect('admin/upload_success')
         except Exception as e:
-            content = {'Internal Server Error': e.message}
-            return content, status.HTTP_500_INTERNAL_SERVER_ERROR
+            content = {'error': str(e), 'status': 500}
+            return json.dumps(content)
 
 
 @app.route('/download_file', methods = ['GET', 'POST'])
@@ -33,6 +33,6 @@ def download_file():
             response.mimetype='text/csv'
             return response
         except Exception as e:
-            content = {'Internal Server Error': e.message}
-            return content, status.HTTP_500_INTERNAL_SERVER_ERROR
+            content = {'error': str(e), 'status': 500}
+            return json.dumps(content)
 
