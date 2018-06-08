@@ -21,7 +21,7 @@ def upload_file():
 
 @app.route('/download_file', methods = ['GET', 'POST'])
 def download_file():
-    if request.method == 'POST':
+    if request.method == 'GET':
         try:
             df = pd.read_sql('items', con=db.engine)
             buffer = StringIO()
