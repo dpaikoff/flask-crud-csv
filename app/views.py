@@ -28,6 +28,6 @@ class DownloadView(BaseView):
 
 admin.add_view(ModelView(Items, db.session))
 admin.add_view(UploadView('Upload', url='upload'))
-admin.add_view(UploadSuccessView('Upload', url='upload_success'))
+admin.add_view(UploadSuccessView('UploadSuccess', url='upload_success'))
 admin.add_view(DownloadView('Download', url='download'))
 
